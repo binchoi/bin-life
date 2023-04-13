@@ -88,13 +88,6 @@ var app = (function () {
             return fn.call(this, event);
         };
     }
-    function stop_propagation(fn) {
-        return function (event) {
-            event.stopPropagation();
-            // @ts-ignore
-            return fn.call(this, event);
-        };
-    }
     function attr(node, attribute, value) {
         if (value == null)
             node.removeAttribute(attribute);
@@ -736,7 +729,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (22:2) {#each [...Array(100).keys()].map(y => (startYear + y).toString()) as year}
+    // (23:2) {#each [...Array(100).keys()].map(y => (startYear + y).toString()) as year}
     function create_each_block_2$1(ctx) {
     	let option;
     	let t_value = /*year*/ ctx[1] + "";
@@ -749,7 +742,7 @@ var app = (function () {
     			t = text(t_value);
     			option.__value = option_value_value = /*year*/ ctx[1];
     			option.value = option.__value;
-    			add_location(option, file$a, 22, 4, 519);
+    			add_location(option, file$a, 23, 4, 485);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -772,14 +765,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2$1.name,
     		type: "each",
-    		source: "(22:2) {#each [...Array(100).keys()].map(y => (startYear + y).toString()) as year}",
+    		source: "(23:2) {#each [...Array(100).keys()].map(y => (startYear + y).toString()) as year}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (28:2) {#each [...Array(12).keys()].map(m => (m + 1).toString().padStart(2, '0')) as month}
+    // (29:2) {#each [...Array(12).keys()].map(m => (m + 1).toString().padStart(2, '0')) as month}
     function create_each_block_1$1(ctx) {
     	let option;
     	let t_value = /*month*/ ctx[2] + "";
@@ -791,7 +784,7 @@ var app = (function () {
     			t = text(t_value);
     			option.__value = /*month*/ ctx[2];
     			option.value = option.__value;
-    			add_location(option, file$a, 28, 4, 684);
+    			add_location(option, file$a, 29, 4, 650);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -807,14 +800,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$1.name,
     		type: "each",
-    		source: "(28:2) {#each [...Array(12).keys()].map(m => (m + 1).toString().padStart(2, '0')) as month}",
+    		source: "(29:2) {#each [...Array(12).keys()].map(m => (m + 1).toString().padStart(2, '0')) as month}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (34:2) {#each [...Array(31).keys()].map(d => (d + 1).toString().padStart(2, '0')) as day}
+    // (35:2) {#each [...Array(31).keys()].map(d => (d + 1).toString().padStart(2, '0')) as day}
     function create_each_block$5(ctx) {
     	let option;
     	let t_value = /*day*/ ctx[3] + "";
@@ -826,7 +819,7 @@ var app = (function () {
     			t = text(t_value);
     			option.__value = /*day*/ ctx[3];
     			option.value = option.__value;
-    			add_location(option, file$a, 34, 4, 846);
+    			add_location(option, file$a, 35, 4, 812);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -842,7 +835,7 @@ var app = (function () {
     		block,
     		id: create_each_block$5.name,
     		type: "each",
-    		source: "(34:2) {#each [...Array(31).keys()].map(d => (d + 1).toString().padStart(2, '0')) as day}",
+    		source: "(35:2) {#each [...Array(31).keys()].map(d => (d + 1).toString().padStart(2, '0')) as day}",
     		ctx
     	});
 
@@ -904,11 +897,11 @@ var app = (function () {
     			}
 
     			if (/*year*/ ctx[1] === void 0) add_render_callback(() => /*select0_change_handler*/ ctx[6].call(select0));
-    			add_location(select0, file$a, 20, 0, 410);
+    			add_location(select0, file$a, 21, 0, 376);
     			if (/*month*/ ctx[2] === void 0) add_render_callback(() => /*select1_change_handler*/ ctx[7].call(select1));
-    			add_location(select1, file$a, 26, 0, 565);
+    			add_location(select1, file$a, 27, 0, 531);
     			if (/*day*/ ctx[3] === void 0) add_render_callback(() => /*select2_change_handler*/ ctx[8].call(select2));
-    			add_location(select2, file$a, 32, 0, 731);
+    			add_location(select2, file$a, 33, 0, 697);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1068,9 +1061,12 @@ var app = (function () {
     	validate_slots("DatePicker", slots, []);
     	let { dateString } = $$props;
     	let { startYear } = $$props;
-    	let year = dateString.substr(0, 4);
-    	let month = dateString.substr(5, 2);
-    	let day = dateString.substr(8, 2);
+
+    	// Hardcode my DOB
+    	let year = "2001";
+
+    	let month = "02";
+    	let day = "19";
     	const writable_props = ["dateString", "startYear"];
 
     	Object.keys($$props).forEach(key => {
@@ -1189,29 +1185,16 @@ var app = (function () {
 
     function create_fragment$a(ctx) {
     	let div;
-    	let t;
-    	let datepicker;
-    	let updating_dateString;
-    	let current;
-
-    	function datepicker_dateString_binding(value) {
-    		/*datepicker_dateString_binding*/ ctx[2](value);
-    	}
-
-    	let datepicker_props = { startYear: /*startYear*/ ctx[1] };
-
-    	if (/*$dobString*/ ctx[0] !== void 0) {
-    		datepicker_props.dateString = /*$dobString*/ ctx[0];
-    	}
-
-    	datepicker = new DatePicker({ props: datepicker_props, $$inline: true });
-    	binding_callbacks.push(() => bind(datepicker, "dateString", datepicker_dateString_binding));
+    	let t0;
+    	let b;
 
     	const block = {
     		c: function create() {
     			div = element("div");
-    			t = text("Your day of birth: ");
-    			create_component(datepicker.$$.fragment);
+    			t0 = text("Your Date of Birth: ");
+    			b = element("b");
+    			b.textContent = "2001-02-19";
+    			add_location(b, file$9, 14, 22, 342);
     			attr_dev(div, "class", "dob-picker");
     			add_location(div, file$9, 13, 0, 295);
     		},
@@ -1220,33 +1203,14 @@ var app = (function () {
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
-    			append_dev(div, t);
-    			mount_component(datepicker, div, null);
-    			current = true;
+    			append_dev(div, t0);
+    			append_dev(div, b);
     		},
-    		p: function update(ctx, [dirty]) {
-    			const datepicker_changes = {};
-
-    			if (!updating_dateString && dirty & /*$dobString*/ 1) {
-    				updating_dateString = true;
-    				datepicker_changes.dateString = /*$dobString*/ ctx[0];
-    				add_flush_callback(() => updating_dateString = false);
-    			}
-
-    			datepicker.$set(datepicker_changes);
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(datepicker.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(datepicker.$$.fragment, local);
-    			current = false;
-    		},
+    		p: noop,
+    		i: noop,
+    		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div);
-    			destroy_component(datepicker);
     		}
     	};
 
@@ -1274,11 +1238,6 @@ var app = (function () {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<DobPicker> was created with unknown prop '${key}'`);
     	});
 
-    	function datepicker_dateString_binding(value) {
-    		$dobString = value;
-    		dobString.set($dobString);
-    	}
-
     	$$self.$capture_state = () => ({
     		dobString,
     		add,
@@ -1289,7 +1248,7 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ("startYear" in $$props) $$invalidate(1, startYear = $$props.startYear);
+    		if ("startYear" in $$props) startYear = $$props.startYear;
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -1304,7 +1263,7 @@ var app = (function () {
     		}
     	};
 
-    	return [$dobString, startYear, datepicker_dateString_binding];
+    	return [$dobString];
     }
 
     class DobPicker extends SvelteComponentDev {
@@ -2108,7 +2067,7 @@ var app = (function () {
     }
 
     // (97:6) {#if !$newTimeSpan.endDate}
-    function create_if_block_4$2(ctx) {
+    function create_if_block_4$1(ctx) {
     	let t0;
     	let button;
     	let mounted;
@@ -2142,7 +2101,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_4$2.name,
+    		id: create_if_block_4$1.name,
     		type: "if",
     		source: "(97:6) {#if !$newTimeSpan.endDate}",
     		ctx
@@ -2734,7 +2693,7 @@ var app = (function () {
     	let if_block0 = current_block_type(ctx);
 
     	function select_block_type_1(ctx, dirty) {
-    		if (!/*$newTimeSpan*/ ctx[5].endDate) return create_if_block_4$2;
+    		if (!/*$newTimeSpan*/ ctx[5].endDate) return create_if_block_4$1;
     		return create_else_block_4$1;
     	}
 
@@ -3309,10 +3268,10 @@ var app = (function () {
     		c: function create() {
     			div1 = element("div");
     			div0 = element("div");
-    			attr_dev(div0, "class", "week svelte-xcrpqt");
+    			attr_dev(div0, "class", "week svelte-1jnujjc");
     			attr_dev(div0, "style", /*style*/ ctx[3]);
     			add_location(div0, file$5, 49, 2, 1479);
-    			attr_dev(div1, "class", div1_class_value = "" + (null_to_empty(/*classNames*/ ctx[2]) + " svelte-xcrpqt"));
+    			attr_dev(div1, "class", div1_class_value = "" + (null_to_empty(/*classNames*/ ctx[2]) + " svelte-1jnujjc"));
     			add_location(div1, file$5, 46, 0, 1321);
     		},
     		l: function claim(nodes) {
@@ -3337,7 +3296,7 @@ var app = (function () {
     				attr_dev(div0, "style", /*style*/ ctx[3]);
     			}
 
-    			if (dirty & /*classNames*/ 4 && div1_class_value !== (div1_class_value = "" + (null_to_empty(/*classNames*/ ctx[2]) + " svelte-xcrpqt"))) {
+    			if (dirty & /*classNames*/ 4 && div1_class_value !== (div1_class_value = "" + (null_to_empty(/*classNames*/ ctx[2]) + " svelte-1jnujjc"))) {
     				attr_dev(div1, "class", div1_class_value);
     			}
     		},
@@ -3552,7 +3511,8 @@ var app = (function () {
     			div = element("div");
     			t = text(t_value);
     			attr_dev(div, "class", "label week-label svelte-1xzrcqo");
-    			add_location(div, file$4, 38, 6, 970);
+    			set_style(div, "margin", "0.2rem");
+    			add_location(div, file$4, 38, 6, 968);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -3657,9 +3617,9 @@ var app = (function () {
 
     			t2 = space();
     			attr_dev(div0, "class", "label year-label svelte-1xzrcqo");
-    			add_location(div0, file$4, 43, 6, 1094);
+    			add_location(div0, file$4, 43, 6, 1115);
     			attr_dev(div1, "class", "year svelte-1xzrcqo");
-    			add_location(div1, file$4, 42, 4, 1069);
+    			add_location(div1, file$4, 42, 4, 1090);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -3784,7 +3744,7 @@ var app = (function () {
     			t3 = space();
     			div4 = element("div");
     			div3 = element("div");
-    			div3.textContent = "age ↓";
+    			div3.textContent = "age";
     			t5 = space();
 
     			for (let i = 0; i < each_blocks_1.length; i += 1) {
@@ -4922,7 +4882,7 @@ var app = (function () {
     }
 
     // (61:6) {#if $timeSpans[$editIdx].endDate === 'ongoing'}
-    function create_if_block_4$1(ctx) {
+    function create_if_block_4(ctx) {
     	let t0;
     	let a;
     	let mounted;
@@ -4959,7 +4919,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_4$1.name,
+    		id: create_if_block_4.name,
     		type: "if",
     		source: "(61:6) {#if $timeSpans[$editIdx].endDate === 'ongoing'}",
     		ctx
@@ -5572,7 +5532,7 @@ var app = (function () {
 
     	datepicker = new DatePicker({ props: datepicker_props, $$inline: true });
     	binding_callbacks.push(() => bind(datepicker, "dateString", datepicker_dateString_binding));
-    	const if_block_creators = [create_if_block_4$1, create_else_block_4];
+    	const if_block_creators = [create_if_block_4, create_else_block_4];
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
@@ -6229,51 +6189,7 @@ var app = (function () {
     /* src/App.svelte generated by Svelte v3.38.2 */
     const file = "src/App.svelte";
 
-    // (30:4) {#if $timeSpans.length}
-    function create_if_block_4(ctx) {
-    	let div;
-    	let button;
-    	let mounted;
-    	let dispose;
-
-    	const block = {
-    		c: function create() {
-    			div = element("div");
-    			button = element("button");
-    			button.textContent = "Edit time spans";
-    			attr_dev(button, "class", "svelte-1hdjrr7");
-    			add_location(button, file, 31, 8, 1081);
-    			add_location(div, file, 30, 6, 1067);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    			append_dev(div, button);
-
-    			if (!mounted) {
-    				dispose = listen_dev(button, "click", stop_propagation(/*click_handler_1*/ ctx[5]), false, false, true);
-    				mounted = true;
-    			}
-    		},
-    		p: noop,
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
-    			mounted = false;
-    			dispose();
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block_4.name,
-    		type: "if",
-    		source: "(30:4) {#if $timeSpans.length}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (46:0) {#if $showSettings}
+    // (43:0) {#if $showSettings}
     function create_if_block_3(ctx) {
     	let settings;
     	let current;
@@ -6305,14 +6221,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(46:0) {#if $showSettings}",
+    		source: "(43:0) {#if $showSettings}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (50:0) {#if $appMode === 'create-time-span'}
+    // (47:0) {#if $appMode === 'create-time-span'}
     function create_if_block_2(ctx) {
     	let createtimespan;
     	let current;
@@ -6344,14 +6260,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(50:0) {#if $appMode === 'create-time-span'}",
+    		source: "(47:0) {#if $appMode === 'create-time-span'}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (54:0) {#if $appMode === 'edit-time-spans'}
+    // (51:0) {#if $appMode === 'edit-time-spans'}
     function create_if_block_1(ctx) {
     	let edittimespans;
     	let current;
@@ -6383,14 +6299,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(54:0) {#if $appMode === 'edit-time-spans'}",
+    		source: "(51:0) {#if $appMode === 'edit-time-spans'}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (58:0) {#if $editIdx !== null}
+    // (55:0) {#if $editIdx !== null}
     function create_if_block(ctx) {
     	let edittimespan;
     	let current;
@@ -6422,7 +6338,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(58:0) {#if $editIdx !== null}",
+    		source: "(55:0) {#if $editIdx !== null}",
     		ctx
     	});
 
@@ -6434,104 +6350,58 @@ var app = (function () {
     	let h1;
     	let t1;
     	let p;
-    	let t2;
-    	let a0;
+    	let t3;
+    	let dobpicker;
     	let t4;
-    	let a1;
+    	let calendar;
+    	let t5;
+    	let currentweekdetails;
     	let t6;
     	let t7;
-    	let dobpicker;
     	let t8;
-    	let div1;
-    	let div0;
-    	let button0;
+    	let t9;
     	let t10;
-    	let t11;
-    	let div2;
-    	let button1;
-    	let t13;
-    	let calendar;
-    	let t14;
-    	let currentweekdetails;
-    	let t15;
-    	let t16;
-    	let t17;
-    	let t18;
-    	let t19;
     	let notices;
     	let current;
-    	let mounted;
-    	let dispose;
     	dobpicker = new DobPicker({ $$inline: true });
-    	let if_block0 = /*$timeSpans*/ ctx[1].length && create_if_block_4(ctx);
     	calendar = new Calendar({ $$inline: true });
     	currentweekdetails = new CurrentWeekDetails({ $$inline: true });
-    	let if_block1 = /*$showSettings*/ ctx[2] && create_if_block_3(ctx);
-    	let if_block2 = /*$appMode*/ ctx[0] === "create-time-span" && create_if_block_2(ctx);
-    	let if_block3 = /*$appMode*/ ctx[0] === "edit-time-spans" && create_if_block_1(ctx);
-    	let if_block4 = /*$editIdx*/ ctx[3] !== null && create_if_block(ctx);
+    	let if_block0 = /*$showSettings*/ ctx[0] && create_if_block_3(ctx);
+    	let if_block1 = /*$appMode*/ ctx[1] === "create-time-span" && create_if_block_2(ctx);
+    	let if_block2 = /*$appMode*/ ctx[1] === "edit-time-spans" && create_if_block_1(ctx);
+    	let if_block3 = /*$editIdx*/ ctx[2] !== null && create_if_block(ctx);
     	notices = new Notices({ $$inline: true });
 
     	const block = {
     		c: function create() {
     			main = element("main");
     			h1 = element("h1");
-    			h1.textContent = "YOUR LIFE";
+    			h1.textContent = "BinLife";
     			t1 = space();
     			p = element("p");
-    			t2 = text("Wonder what this is? Look at\n    ");
-    			a0 = element("a");
-    			a0.textContent = "this blog post by Wait But Why";
-    			t4 = text("\n    and\n    ");
-    			a1 = element("a");
-    			a1.textContent = "this video by Kurzgesagt";
-    			t6 = text(".\n    I'm not affiliated with either.");
-    			t7 = space();
+    			p.textContent = "Each circle represents a week in your life";
+    			t3 = space();
     			create_component(dobpicker.$$.fragment);
-    			t8 = space();
-    			div1 = element("div");
-    			div0 = element("div");
-    			button0 = element("button");
-    			button0.textContent = "Create time span";
-    			t10 = space();
-    			if (if_block0) if_block0.c();
-    			t11 = space();
-    			div2 = element("div");
-    			button1 = element("button");
-    			button1.textContent = "Settings";
-    			t13 = space();
+    			t4 = space();
     			create_component(calendar.$$.fragment);
-    			t14 = space();
+    			t5 = space();
     			create_component(currentweekdetails.$$.fragment);
-    			t15 = space();
+    			t6 = space();
+    			if (if_block0) if_block0.c();
+    			t7 = space();
     			if (if_block1) if_block1.c();
-    			t16 = space();
+    			t8 = space();
     			if (if_block2) if_block2.c();
-    			t17 = space();
+    			t9 = space();
     			if (if_block3) if_block3.c();
-    			t18 = space();
-    			if (if_block4) if_block4.c();
-    			t19 = space();
+    			t10 = space();
     			create_component(notices.$$.fragment);
-    			attr_dev(h1, "class", "title svelte-1hdjrr7");
+    			attr_dev(h1, "class", "title svelte-16qfyn5");
+    			set_style(h1, "font-weight", "1000");
     			add_location(h1, file, 13, 2, 501);
-    			attr_dev(a0, "href", "https://waitbutwhy.com/2014/05/life-weeks.html");
-    			attr_dev(a0, "target", "_blank");
-    			add_location(a0, file, 17, 4, 591);
-    			attr_dev(a1, "href", "https://www.youtube.com/watch?v=JXeJANDKwDc");
-    			attr_dev(a1, "target", "_blank");
-    			add_location(a1, file, 19, 4, 711);
-    			attr_dev(p, "class", "info svelte-1hdjrr7");
-    			add_location(p, file, 15, 2, 537);
-    			attr_dev(button0, "class", "svelte-1hdjrr7");
-    			add_location(button0, file, 27, 6, 925);
-    			add_location(div0, file, 26, 4, 913);
-    			attr_dev(div1, "class", "create-button-wrapper svelte-1hdjrr7");
-    			add_location(div1, file, 25, 2, 873);
-    			add_location(button1, file, 37, 4, 1253);
-    			attr_dev(div2, "class", "settings-button-wrapper svelte-1hdjrr7");
-    			add_location(div2, file, 36, 2, 1211);
-    			attr_dev(main, "class", "svelte-1hdjrr7");
+    			attr_dev(p, "class", "info svelte-16qfyn5");
+    			add_location(p, file, 15, 2, 561);
+    			attr_dev(main, "class", "svelte-16qfyn5");
     			add_location(main, file, 12, 0, 492);
     		},
     		l: function claim(nodes) {
@@ -6542,71 +6412,56 @@ var app = (function () {
     			append_dev(main, h1);
     			append_dev(main, t1);
     			append_dev(main, p);
-    			append_dev(p, t2);
-    			append_dev(p, a0);
-    			append_dev(p, t4);
-    			append_dev(p, a1);
-    			append_dev(p, t6);
-    			append_dev(main, t7);
+    			append_dev(main, t3);
     			mount_component(dobpicker, main, null);
-    			append_dev(main, t8);
-    			append_dev(main, div1);
-    			append_dev(div1, div0);
-    			append_dev(div0, button0);
-    			append_dev(div1, t10);
-    			if (if_block0) if_block0.m(div1, null);
-    			append_dev(main, t11);
-    			append_dev(main, div2);
-    			append_dev(div2, button1);
-    			append_dev(main, t13);
+    			append_dev(main, t4);
     			mount_component(calendar, main, null);
-    			insert_dev(target, t14, anchor);
+    			insert_dev(target, t5, anchor);
     			mount_component(currentweekdetails, target, anchor);
-    			insert_dev(target, t15, anchor);
+    			insert_dev(target, t6, anchor);
+    			if (if_block0) if_block0.m(target, anchor);
+    			insert_dev(target, t7, anchor);
     			if (if_block1) if_block1.m(target, anchor);
-    			insert_dev(target, t16, anchor);
+    			insert_dev(target, t8, anchor);
     			if (if_block2) if_block2.m(target, anchor);
-    			insert_dev(target, t17, anchor);
+    			insert_dev(target, t9, anchor);
     			if (if_block3) if_block3.m(target, anchor);
-    			insert_dev(target, t18, anchor);
-    			if (if_block4) if_block4.m(target, anchor);
-    			insert_dev(target, t19, anchor);
+    			insert_dev(target, t10, anchor);
     			mount_component(notices, target, anchor);
     			current = true;
-
-    			if (!mounted) {
-    				dispose = [
-    					listen_dev(button0, "click", stop_propagation(/*click_handler*/ ctx[4]), false, false, true),
-    					listen_dev(button1, "click", stop_propagation(/*click_handler_2*/ ctx[6]), false, false, true)
-    				];
-
-    				mounted = true;
-    			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (/*$timeSpans*/ ctx[1].length) {
+    			if (/*$showSettings*/ ctx[0]) {
     				if (if_block0) {
-    					if_block0.p(ctx, dirty);
+    					if (dirty & /*$showSettings*/ 1) {
+    						transition_in(if_block0, 1);
+    					}
     				} else {
-    					if_block0 = create_if_block_4(ctx);
+    					if_block0 = create_if_block_3(ctx);
     					if_block0.c();
-    					if_block0.m(div1, null);
+    					transition_in(if_block0, 1);
+    					if_block0.m(t7.parentNode, t7);
     				}
     			} else if (if_block0) {
-    				if_block0.d(1);
-    				if_block0 = null;
+    				group_outros();
+
+    				transition_out(if_block0, 1, 1, () => {
+    					if_block0 = null;
+    				});
+
+    				check_outros();
     			}
 
-    			if (/*$showSettings*/ ctx[2]) {
+    			if (/*$appMode*/ ctx[1] === "create-time-span") {
     				if (if_block1) {
-    					if (dirty & /*$showSettings*/ 4) {
+    					if (dirty & /*$appMode*/ 2) {
     						transition_in(if_block1, 1);
     					}
     				} else {
-    					if_block1 = create_if_block_3(ctx);
+    					if_block1 = create_if_block_2(ctx);
     					if_block1.c();
     					transition_in(if_block1, 1);
-    					if_block1.m(t16.parentNode, t16);
+    					if_block1.m(t8.parentNode, t8);
     				}
     			} else if (if_block1) {
     				group_outros();
@@ -6618,16 +6473,16 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*$appMode*/ ctx[0] === "create-time-span") {
+    			if (/*$appMode*/ ctx[1] === "edit-time-spans") {
     				if (if_block2) {
-    					if (dirty & /*$appMode*/ 1) {
+    					if (dirty & /*$appMode*/ 2) {
     						transition_in(if_block2, 1);
     					}
     				} else {
-    					if_block2 = create_if_block_2(ctx);
+    					if_block2 = create_if_block_1(ctx);
     					if_block2.c();
     					transition_in(if_block2, 1);
-    					if_block2.m(t17.parentNode, t17);
+    					if_block2.m(t9.parentNode, t9);
     				}
     			} else if (if_block2) {
     				group_outros();
@@ -6639,16 +6494,16 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*$appMode*/ ctx[0] === "edit-time-spans") {
+    			if (/*$editIdx*/ ctx[2] !== null) {
     				if (if_block3) {
-    					if (dirty & /*$appMode*/ 1) {
+    					if (dirty & /*$editIdx*/ 4) {
     						transition_in(if_block3, 1);
     					}
     				} else {
-    					if_block3 = create_if_block_1(ctx);
+    					if_block3 = create_if_block(ctx);
     					if_block3.c();
     					transition_in(if_block3, 1);
-    					if_block3.m(t18.parentNode, t18);
+    					if_block3.m(t10.parentNode, t10);
     				}
     			} else if (if_block3) {
     				group_outros();
@@ -6659,37 +6514,16 @@ var app = (function () {
 
     				check_outros();
     			}
-
-    			if (/*$editIdx*/ ctx[3] !== null) {
-    				if (if_block4) {
-    					if (dirty & /*$editIdx*/ 8) {
-    						transition_in(if_block4, 1);
-    					}
-    				} else {
-    					if_block4 = create_if_block(ctx);
-    					if_block4.c();
-    					transition_in(if_block4, 1);
-    					if_block4.m(t19.parentNode, t19);
-    				}
-    			} else if (if_block4) {
-    				group_outros();
-
-    				transition_out(if_block4, 1, 1, () => {
-    					if_block4 = null;
-    				});
-
-    				check_outros();
-    			}
     		},
     		i: function intro(local) {
     			if (current) return;
     			transition_in(dobpicker.$$.fragment, local);
     			transition_in(calendar.$$.fragment, local);
     			transition_in(currentweekdetails.$$.fragment, local);
+    			transition_in(if_block0);
     			transition_in(if_block1);
     			transition_in(if_block2);
     			transition_in(if_block3);
-    			transition_in(if_block4);
     			transition_in(notices.$$.fragment, local);
     			current = true;
     		},
@@ -6697,32 +6531,29 @@ var app = (function () {
     			transition_out(dobpicker.$$.fragment, local);
     			transition_out(calendar.$$.fragment, local);
     			transition_out(currentweekdetails.$$.fragment, local);
+    			transition_out(if_block0);
     			transition_out(if_block1);
     			transition_out(if_block2);
     			transition_out(if_block3);
-    			transition_out(if_block4);
     			transition_out(notices.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(main);
     			destroy_component(dobpicker);
-    			if (if_block0) if_block0.d();
     			destroy_component(calendar);
-    			if (detaching) detach_dev(t14);
+    			if (detaching) detach_dev(t5);
     			destroy_component(currentweekdetails, detaching);
-    			if (detaching) detach_dev(t15);
+    			if (detaching) detach_dev(t6);
+    			if (if_block0) if_block0.d(detaching);
+    			if (detaching) detach_dev(t7);
     			if (if_block1) if_block1.d(detaching);
-    			if (detaching) detach_dev(t16);
+    			if (detaching) detach_dev(t8);
     			if (if_block2) if_block2.d(detaching);
-    			if (detaching) detach_dev(t17);
+    			if (detaching) detach_dev(t9);
     			if (if_block3) if_block3.d(detaching);
-    			if (detaching) detach_dev(t18);
-    			if (if_block4) if_block4.d(detaching);
-    			if (detaching) detach_dev(t19);
+    			if (detaching) detach_dev(t10);
     			destroy_component(notices, detaching);
-    			mounted = false;
-    			run_all(dispose);
     		}
     	};
 
@@ -6738,18 +6569,15 @@ var app = (function () {
     }
 
     function instance($$self, $$props, $$invalidate) {
-    	let $appMode;
-    	let $timeSpans;
     	let $showSettings;
+    	let $appMode;
     	let $editIdx;
-    	validate_store(appMode, "appMode");
-    	component_subscribe($$self, appMode, $$value => $$invalidate(0, $appMode = $$value));
-    	validate_store(timeSpans, "timeSpans");
-    	component_subscribe($$self, timeSpans, $$value => $$invalidate(1, $timeSpans = $$value));
     	validate_store(showSettings, "showSettings");
-    	component_subscribe($$self, showSettings, $$value => $$invalidate(2, $showSettings = $$value));
+    	component_subscribe($$self, showSettings, $$value => $$invalidate(0, $showSettings = $$value));
+    	validate_store(appMode, "appMode");
+    	component_subscribe($$self, appMode, $$value => $$invalidate(1, $appMode = $$value));
     	validate_store(editIdx, "editIdx");
-    	component_subscribe($$self, editIdx, $$value => $$invalidate(3, $editIdx = $$value));
+    	component_subscribe($$self, editIdx, $$value => $$invalidate(2, $editIdx = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("App", slots, []);
     	const writable_props = [];
@@ -6757,10 +6585,6 @@ var app = (function () {
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<App> was created with unknown prop '${key}'`);
     	});
-
-    	const click_handler = () => set_store_value(appMode, $appMode = "create-time-span", $appMode);
-    	const click_handler_1 = () => set_store_value(appMode, $appMode = "edit-time-spans", $appMode);
-    	const click_handler_2 = () => set_store_value(showSettings, $showSettings = true, $showSettings);
 
     	$$self.$capture_state = () => ({
     		appMode,
@@ -6775,21 +6599,12 @@ var app = (function () {
     		EditTimeSpans,
     		EditTimeSpan,
     		Notices,
-    		$appMode,
-    		$timeSpans,
     		$showSettings,
+    		$appMode,
     		$editIdx
     	});
 
-    	return [
-    		$appMode,
-    		$timeSpans,
-    		$showSettings,
-    		$editIdx,
-    		click_handler,
-    		click_handler_1,
-    		click_handler_2
-    	];
+    	return [$showSettings, $appMode, $editIdx];
     }
 
     class App extends SvelteComponentDev {

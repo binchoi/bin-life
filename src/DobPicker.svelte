@@ -12,5 +12,5 @@
 </script>
 
 <div class="dob-picker">
-  Your day of birth: <DatePicker bind:dateString={$dobString} startYear={startYear}/>
+  Your Date of Birth: <b>2001-02-19</b>
 </div>

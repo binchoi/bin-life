@@ -34,9 +34,9 @@
     <div style="flex: 1">weeks</div>
   </div>
   <div class="year">
-    <div class="label year-label">age ↓</div>
+    <div class="label year-label">age</div>
     {#each [...Array(52).keys()] as week}
-      <div class="label week-label">{week + 1}</div>
+      <div class="label week-label" style="margin: 0.2rem">{week + 1}</div>
     {/each}
   </div>
   {#each allYears as year}

@@ -52,11 +52,11 @@
 
 <style>
   .week-wrapper {
-    padding: 0.1rem;
+    padding: 0.2rem;
   }
 
   .week {
-    border: 1px solid var(--black);
+    border: 1px solid #e8e8e8;
     width: 1.2rem;
     height: 1.2rem;
     border-radius: 50%;
@@ -64,20 +64,20 @@
   }
 
   .is-past .week {
-    background: var(--grey);
+    background: #2698ba;
   }
 
   @keyframes blinkNow {
-    0%, 49% {
-      opacity: 1;
-    }
-    50%, 100% {
+    0%, 25%, 75%, 100% {
       opacity: 0;
+    }
+    35%, 65% {
+      opacity: 1;
     }
   }
 
   .is-now .week {
-    animation: blinkNow 1s infinite;
+    animation: blinkNow 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
 
   .is-hovered .week {

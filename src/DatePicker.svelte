@@ -2,9 +2,10 @@
   export let dateString;
   export let startYear;
 
-  let year = dateString.substr(0, 4);
-  let month = dateString.substr(5, 2);
-  let day = dateString.substr(8, 2);
+  // Hardcode my DOB
+  let year = "2001";
+  let month = "02";
+  let day = "19";
 
   $: {
     dateString = `${year}-${month}-${day}`;

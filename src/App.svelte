@@ -11,19 +11,16 @@
 </script>
 
 <main>
-  <h1 class="title">YOUR LIFE</h1>
+  <h1 class="title" style="font-weight: 1000">BinLife</h1>
 
   <p class="info">
-    Wonder what this is? Look at
-    <a href="https://waitbutwhy.com/2014/05/life-weeks.html" target="_blank">this blog post by Wait But Why</a>
-    and
-    <a href="https://www.youtube.com/watch?v=JXeJANDKwDc" target="_blank">this video by Kurzgesagt</a>.
-    I'm not affiliated with either.
+    Each circle represents a week in your life
   </p>
 
   <DobPicker/>
 
-  <div class="create-button-wrapper">
+  <!-- Unused Functionality -->
+  <!-- <div class="create-button-wrapper">
     <div>
       <button on:click|stopPropagation={() => $appMode = 'create-time-span'}>Create time span</button>
     </div>
@@ -32,11 +29,11 @@
         <button on:click|stopPropagation={() => $appMode = 'edit-time-spans'}>Edit time spans</button>
       </div>
     {/if}
-  </div>
+  </div> -->
 
-  <div class="settings-button-wrapper">
+  <!-- <div class="settings-button-wrapper">
     <button on:click|stopPropagation={() => $showSettings = true}>Settings</button>
-  </div>
+  </div> -->
 
   <Calendar/>
 </main>
@@ -66,14 +63,14 @@
     text-align: center;
     padding: 1em;
     margin: 0 auto;
-    font-size: 0.7rem;
+    font-size: 1rem;
   }
 
   .title {
-    text-transform: uppercase;
     font-size: 4em;
     font-weight: 100;
     margin-bottom: 0;
+    color: #2698ba;
   }
 
   .info {
