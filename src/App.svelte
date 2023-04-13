@@ -78,21 +78,4 @@
     margin: 1rem auto 1.5rem;
     line-height: 1.5;
   }
-
-  .create-button-wrapper {
-    position: fixed;
-    left: 1.2rem;
-    top: 1.2rem;
-    text-align: left;
-  }
-
-  .create-button-wrapper button {
-    margin-bottom: 1rem;
-  }
-
-  .settings-button-wrapper {
-    position: fixed;
-    right: 1.2rem;
-    top: 1.2rem;
-  }
 </style>
