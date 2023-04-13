@@ -6,7 +6,7 @@ export const appMode = writable('default');
 export const showSettings = writable(false);
 export const currentWeek = writable(null);
 export const clickedWeek = writable(null);
-export const dobString = writable(load('dateOfBirth') || "20010219");
+export const dobString = writable(load('dateOfBirth') || "2001-02-19");
 export const timeSpans = writable(load('timeSpans') || []);
 export const editIdx = writable(null);
 
