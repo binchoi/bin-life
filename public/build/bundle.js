@@ -1647,10 +1647,10 @@ var app = (function () {
     			t7 = text(t7_value);
     			t8 = space();
     			if (if_block) if_block.c();
-    			attr_dev(strong, "class", "week svelte-cgmv2i");
+    			attr_dev(strong, "class", "week svelte-mswh5d");
     			add_location(strong, file$7, 7, 4, 168);
     			add_location(br, file$7, 7, 88, 252);
-    			attr_dev(div, "class", "current-week-details svelte-cgmv2i");
+    			attr_dev(div, "class", "current-week-details svelte-mswh5d");
     			add_location(div, file$7, 6, 2, 129);
     		},
     		m: function mount(target, anchor) {
@@ -1752,7 +1752,7 @@ var app = (function () {
     			}
 
     			each_1_anchor = empty();
-    			attr_dev(hr, "class", "spacer svelte-cgmv2i");
+    			attr_dev(hr, "class", "spacer svelte-mswh5d");
     			add_location(hr, file$7, 11, 6, 366);
     		},
     		m: function mount(target, anchor) {
@@ -1849,7 +1849,7 @@ var app = (function () {
     			div = element("div");
     			create_component(spandetail.$$.fragment);
     			t = space();
-    			attr_dev(div, "class", "detail-wrapper svelte-cgmv2i");
+    			attr_dev(div, "class", "detail-wrapper svelte-mswh5d");
     			add_location(div, file$7, 13, 8, 450);
     		},
     		m: function mount(target, anchor) {
