@@ -673,7 +673,7 @@ var app = (function () {
     const showSettings = writable(false);
     const currentWeek = writable(null);
     const clickedWeek = writable(null);
-    const dobString = writable(load('dateOfBirth') || "20010219");
+    const dobString = writable(load('dateOfBirth') || "2001-02-19");
     const timeSpans = writable(load('timeSpans') || []);
     const editIdx = writable(null);
 
