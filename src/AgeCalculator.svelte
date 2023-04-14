@@ -31,8 +31,8 @@
   const cur_age = dateDiff(today, dob)
 </script>
 
-<div class="age-calculator" style="padding-top: -1rem; padding-bottom: 1rem">
-  You have spent <b class="my-age">{cur_age}</b> on this beautiful planet. 
+<div class="age-calculator" style="padding-top: -1rem; padding-bottom: 1rem; font-size: 140%;">
+  You have spent <b class="my-age">{cur_age}</b> on this beautiful planet 🌎
 </div>
 
 <style>
