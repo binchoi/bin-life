@@ -27,7 +27,7 @@
     border: 1px solid var(--black);
     padding: 1rem;
     width: 16rem;
-    background: var(--white);
+    background: #2a2a2c;
     border-radius: 0.3rem;
     box-shadow: 0 0 2px 0 var(--black);
   }

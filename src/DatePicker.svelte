@@ -21,7 +21,7 @@
 
 <select bind:value={year}>
   {#each [...Array(100).keys()].map(y => (startYear + y).toString()) as year}
-    <option>{year}</option>
+<option>{year}</option>
   {/each}
 </select>
 -

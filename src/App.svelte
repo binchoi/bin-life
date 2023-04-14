@@ -1,5 +1,6 @@
 <script>
   import {appMode, timeSpans, showSettings, editIdx} from './stores';
+  import AgeCalculator from './AgeCalculator.svelte';
   import DobPicker from './DobPicker.svelte';
   import CurrentWeekDetails from './CurrentWeekDetails.svelte';
   import CreateTimeSpan from './CreateTimeSpan.svelte';
@@ -17,6 +18,7 @@
     Each circle represents a week in your life
   </p>
 
+  <AgeCalculator/>
   <DobPicker/>
 
   <!-- Unused Functionality -->
@@ -70,7 +72,7 @@
     font-size: 4em;
     font-weight: 100;
     margin-bottom: 0;
-    color: #2698ba;
+    color: var(--my-blue);
   }
 
   .info {
