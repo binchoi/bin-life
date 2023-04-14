@@ -16,7 +16,7 @@ Start [Rollup](https://rollupjs.org):
 npm run dev
 ```
 
-Navigate to [localhost:5000](http://localhost:5000). 
+Navigate to [localhost:5555](http://localhost:5555). 
 
 ## Build and Run in Production mode
 
