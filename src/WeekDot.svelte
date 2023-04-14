@@ -64,7 +64,7 @@
   }
 
   .is-past .week {
-    background: #2698ba;
+    background: var(--my-blue);
   }
 
   @keyframes blinkNow {
