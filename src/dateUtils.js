@@ -31,7 +31,7 @@ export function generateYears(dateOfBirth) {
   let yearIterator = clone(dateOfBirth);
   const allYears = [];
 
-  for(let y = 0; y < 100; y++) {
+  for(let y = 0; y < 86; y++) {
     let startOfYear = yearIterator;
     let endOfYear = add(add(startOfYear, 1, 'years'), -1, 'days');
 
