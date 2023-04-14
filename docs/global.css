@@ -4,6 +4,8 @@
   --grey: #dddddd;
   --grey-dark: #cccccc;
   --sky: #00c3ff;
+  --my-grey: #1c1c1d;
+  --my-blue: #2698ba;
 }
 
 html, body {
@@ -14,7 +16,7 @@ html, body {
 
 body {
   color: #e8e8e8;
-  background-color: #1c1c1d;
+  background-color: var(--my-grey);
   margin: 0;
   padding: 8px;
   box-sizing: border-box;
