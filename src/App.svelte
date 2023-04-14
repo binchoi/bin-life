@@ -66,6 +66,8 @@
     padding: 1em;
     margin: 0 auto;
     font-size: 1rem;
+    /* display: flex; */
+    justify-content: center;
   }
 
   .title {
